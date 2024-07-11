@@ -30,15 +30,6 @@ run_scripts() {
         return 1
     fi
 
-    # Run each script
-    for script in $scripts; do
-        script_name=$(basename "$script")
-        log_info "⏳ Running $script_name..." "$context"
-        chmod +x "$script"
-        "$script"
-        log_info "\n✅ $script_name completed!" "$context"
-    done
-
     for script in $scripts; do
         script_name=$(basename "$script")
         log_info "⏳ Running $script_name..."
