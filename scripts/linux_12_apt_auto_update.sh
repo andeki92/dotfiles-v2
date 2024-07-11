@@ -9,4 +9,4 @@ LIB_DIR="$CURRENT_DIR/common"
 # Load the log_library
 source $LIB_DIR/log.sh
 
-sudo apt install --yes --no-install-recommends "${wanted_packages[@]}"
+sudo apt install unattended-upgrades
