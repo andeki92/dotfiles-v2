@@ -1,3 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# stow tmux
+# Resolve the current directory where the script is being executed
+CURRENT_DIR="$(dirname "$(realpath "$0")")"
+LIB_DIR="$CURRENT_DIR/../scripts/common"
+
+# source the libraries
+source $LIB_DIR/run_scripts.sh
+
+log_info "⌛ Starting the installation process for Linux."
+
+# Run the linux scripts
+if run_scripts "linux_"; then
+    log_info "🏆 All linux scripts executed successfully."
+else
+    log_error "🔥 One or more linux scripts failed to execute."
+fi
+
+stow tmux starship zsh # git
