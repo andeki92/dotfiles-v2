@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Define the profiles directory
+PROFILES_DIR="profiles"
+
+# Function to display usage information
+usage() {
+    echo -e "🚀 Usage: $0 <profile>\n"
+    echo "Available profiles:"
+    for file in $PROFILES_DIR/*; do
+        profile=$(basename "$file" | sed 's/install-//' | sed 's/\.sh//')
+        echo "  - $profile"
+    done
+}
+
+# Function to display an error message
+error() {
+    echo -e "❌ $1"
+    usage
+    exit 1
+}
+
+# Check if an argument is provided
+if [ -z "$1" ]; then
+    error "No profile provided."
+fi
+
+# Construct the profile script filename
+PROFILE_SCRIPT="$PROFILES_DIR/install-$1.sh"
+
+# Check if the profile script exists
+if [ ! -f "$PROFILE_SCRIPT" ]; then
+    error "Profile '$1' does not exist."
+fi
+
+# Display a progress message
+echo -e "⏳ Invoking profile script for '$1'...\n"
+
+# Execute the profile script and indent its output
+chmod +x "$PROFILE_SCRIPT"
+"$PROFILE_SCRIPT" | sed 's/^/    /'
+
+# Display a success message
+echo -e "\n✅ Profile script for '$1' executed successfully!"
