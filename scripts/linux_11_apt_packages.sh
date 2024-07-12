@@ -18,6 +18,7 @@ wanted_packages=(
     bat
     eza
     fd-find
+    git-delta
 )
 
 # Preliminary eza-checks
