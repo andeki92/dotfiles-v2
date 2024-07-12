@@ -13,7 +13,4 @@ if ! command -v fzf &>/dev/null; then
     log_info "🤠 Installing fzf" "git-dependencies"
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
-else
-    log_info "✨ Updating fzf" "git-dependencies"
-    cd ~/.fzf && git pull && ./install
 fi
