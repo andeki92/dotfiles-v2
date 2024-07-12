@@ -8,14 +8,6 @@ functions command_exists() {
   command -v "$@" >/dev/null 2>&1
 }
 
-function is_linux() {
-  if [ "$(uname -s)" = "Linux" ]; then
-    return 0
-  else
-    return 1
-  fi
-}
-
 functions reload() {
     if [ -f  $HOME/.zshenv ]; then
         source $HOME/.zshrc
