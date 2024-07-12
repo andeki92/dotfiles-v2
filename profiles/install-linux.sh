@@ -16,4 +16,4 @@ else
     log_error "🔥 One or more linux scripts failed to execute."
 fi
 
-stow tmux starship zsh # git
+stow tmux starship zsh git git-wsl
