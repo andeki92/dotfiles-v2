@@ -55,12 +55,6 @@ command -v helm >/dev/null 2>&1 && source <(helm completion zsh)
 
 # --- tmux ---
 
-if [[ ! -n $TMUX && $- == *l* && "$TERM" != "dumb" ]]; then
-    main_session="main_session"
-    tmux_session="$(tmux list-sessions 2>/dev/null)"
-    if [[ "$tmux_session" =~ "${main_session}" ]]; then
-        tmux attach-session -t "$main_session"
-    else
-        tmux new-session -s "$main_session"
-    fi
+if [ "$TMUX" = "" ]; then
+    source ~/.config/tmux/tmux-sessionizer "$PWD"
 fi
