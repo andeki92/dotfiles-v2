@@ -14,5 +14,3 @@ alias k="kubectl"
 
 alias kxsh="kubectl_exec_sh"
 alias kxbash="kubectl_exec_bash"
-
-compdef __start_kubectl k # start autocomplete on k
