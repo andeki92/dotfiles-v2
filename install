@@ -73,4 +73,4 @@ chmod +x "$PROFILE_SCRIPT"
 "$PROFILE_SCRIPT"
 
 # Display a success message
-log_info "🧑‍💻 Profile script for '$1' executed successfully!"
+log_info "🧚 Profile script for '$1' executed successfully!"

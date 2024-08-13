@@ -22,7 +22,7 @@ run_scripts() {
     log_info "🔍 Finding and running ${prefix} scripts..." "$context"
 
     # Find and sort scripts with the given prefix
-    scripts=$(find "$SCRIPTS_DIR" -type f -name "${prefix}*.sh" | sort)
+    scripts=$(find "$SCRIPTS_DIR" -type f -name "${prefix}*.sh" -o -name "${prefix}*.zsh" | sort)
 
     # Check if any scripts are found
     if [ -z "$scripts" ]; then

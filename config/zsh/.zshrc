@@ -4,5 +4,6 @@
 source ~/.config/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
 
 source "${HOME}/.config/zsh/no_defer.zsh"
+
 zsh-defer source "${HOME}/.config/zsh/defer.zsh"
 zsh-defer unfunction source

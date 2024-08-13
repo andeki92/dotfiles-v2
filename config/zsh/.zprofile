@@ -16,7 +16,21 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 # setopt inc_append_history     # add commands to HISTFILE in order of execution
 # setopt share_history          # share command history data
 
-# Brew
-if [ -d "${brew_home}" ]; then
-    export PATH=${brew_home}/bin:$PATH
-fi
+# Preferred editor for local and remote sessions
+export EDITOR='vim'
+
+# https://github.com/keybase/keybase-issues/issues/2798
+export GPG_TTY=$(tty)
+
+# Krew (k8s plugin manager)
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# Elhub-plat-utils
+export PATH="$HOME/workspace/plat-platform-utils/scripts:$PATH"
+
+# .local binaries
+export PATH=$HOME/.local/bin:$PATH
+
+# support x11 forwarding
+export DISPLAY=":0.0"
+export LIBGL_ALWAYS_INDIRECT=1

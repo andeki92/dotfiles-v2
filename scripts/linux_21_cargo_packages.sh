@@ -24,3 +24,8 @@ if ! command -v btm &>/dev/null; then
     log_info "💹 Installing btm" "cargo-packages"
     cargo install bottom --locked
 fi
+
+if ! command -v sshs &>/dev/null; then
+    log_info "💹 Installing sshs" "cargo-packages"
+    cargo install --git https://github.com/quantumsheep/sshs
+fi

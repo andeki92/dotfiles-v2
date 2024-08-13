@@ -15,8 +15,7 @@ if ! command -v fzf &>/dev/null; then
     ~/.fzf/install
 fi
 
-if ! command -v zsh-defer &>/dev/null; then
-    log_info "🥱 Installing zsh-defer" "git-dependencies"
-    mkdir -p ~/.config/zsh/plugins
-    git clone --depth 1 https://github.com/romkatv/zsh-defer.git ~/.config/zsh/plugins/zsh-defer
+if ! command -v asdf &>/dev/null; then
+    log_info "🎁 Installing asdf" "git-dependencies"
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 fi

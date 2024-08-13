@@ -12,7 +12,12 @@ function is_linux() {
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 
 # --- asdf 🛠️ (https://asdf-vm.com/) ---
-[ -f "$(brew --prefix asdf)/libexec/asdf.sh" ] && source "$(brew --prefix asdf)/libexec/asdf.sh"
+if [ -f ~/.asdf/asdf.sh ]; then
+    source ~/.asdf/asdf.sh
+
+    # add asdf completions to zsh
+    fpath=(${ASDF_DIR}/completions $fpath)
+fi
 
 if is_linux; then
     eval $(keychain --eval --agents ssh id_rsa >/dev/null 2>&1) >/dev/null 2>&1
