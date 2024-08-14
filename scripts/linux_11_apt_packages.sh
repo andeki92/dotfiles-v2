@@ -19,6 +19,7 @@ wanted_packages=(
     eza
     fd-find
     git-delta
+    ripgrep
 )
 
 # Preliminary eza-checks
