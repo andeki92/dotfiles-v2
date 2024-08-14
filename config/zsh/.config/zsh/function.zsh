@@ -32,3 +32,7 @@ function kubectl_exec_bash() {
     container=$(echo ${containers/ /\\n} | fzf)
     kubectl exec -n $namespace --stdin --tty $pod --container $container -- /bin/bash
 }
+
+function idea() {
+    read -r pid < <(snap run intellij-idea-ultimate $@ 2>&1 &)
+}
