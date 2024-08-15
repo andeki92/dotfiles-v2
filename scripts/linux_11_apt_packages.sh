@@ -12,6 +12,7 @@ source $LIB_DIR/log.sh
 wanted_packages=(
     git
     curl
+    stow
     build-essential
     zsh
     tmux
