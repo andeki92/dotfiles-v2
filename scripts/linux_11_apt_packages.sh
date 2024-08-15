@@ -20,6 +20,11 @@ wanted_packages=(
     fd-find
     git-delta
     ripgrep
+    preload # faster startup times
+)
+
+dependencies=(
+    mesa-utils # required by jetbrains toolbox
 )
 
 # Preliminary eza-checks
@@ -31,6 +36,7 @@ if ! command -v eza &>/dev/null; then
 fi
 
 sudo apt install --yes --no-install-recommends "${wanted_packages[@]}"
+sudo apt install --yes --no-install-recommends "${dependencies[@]}"
 
 # Symlink fdfind as fd
 if ! command -v fd &>/dev/null; then

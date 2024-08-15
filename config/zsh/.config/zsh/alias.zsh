@@ -14,3 +14,7 @@ alias k="kubectl"
 
 alias kxsh="kubectl_exec_sh"
 alias kxbash="kubectl_exec_bash"
+
+alias rgf='rg --files | rg'
+
+alias tb="jetbrains-toolbox"

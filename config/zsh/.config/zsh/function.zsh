@@ -34,5 +34,5 @@ function kubectl_exec_bash() {
 }
 
 function idea() {
-    read -r pid < <(snap run intellij-idea-ultimate $@ 2>&1 &)
+    read -r pid < <(~/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea $@ 2>&1 &)
 }
