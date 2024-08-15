@@ -11,6 +11,3 @@
 
 # Aliases v2
 [ -f ~/.config/zsh/alias.zsh ] && source ~/.config/zsh/alias.zsh
-
-# Source starship environment if it exists
-[ -f ~/.config/zsh/starship.zsh ] && source ~/.config/zsh/starship.zsh

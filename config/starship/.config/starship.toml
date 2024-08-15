@@ -1,25 +1,40 @@
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$character"""
 add_newline = true
-# A minimal left prompt
-format = """$directory$character"""
 palette = "catppuccin_macchiato"
-# move the rest of the prompt to the right
-right_format = """$all"""
 command_timeout = 1000
 
 [git_branch]
-format =  '[$symbol$branch(:$remote_branch)]($style)'
+style = "bold maroon"
+truncation_length = 100   # no truncation
+truncation_symbol = "..."
 
-[golang]
-format = '[ ](bold cyan)'
+[git_status]
+modified = "M"
+untracked = "U"
+deleted = "🗑 "
+renamed = "👅"
+conflicted = "🏳 "
+ahead = "⇡"
+behind = "😰"
+diverged = "😵"
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
 
-[kubernetes]
-symbol = '󰠳 '
-disabled = false
-format = '[$symbol$context( \($namespace\))]($style) '
+[git_state]
+progress_divider = " of "
+cherry_pick = "🍒 PICKING"
 
 [directory]
-truncation_length = 4
-# Catppuccin 'lavender'
+truncation_length = 0
+truncate_to_repo = true
 style = "bold lavender"
 
 # palette tables should be last in the config
