@@ -30,19 +30,32 @@ fi
 if [ ! $(asdf plugin list | grep 'kubectl') ]; then
     log_info "⛵ Installing kubectl asdf plugin" "asdf plugins"
     asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
+
+    log_info "🎮 Adding the latest version of kubectl" "asdf plugins"
+    asdf install kubectl latest
+    asdf global kubectl latest
 fi
 
-if [ ! $(asdf plugin list | grep 'kubectl') ]; then
-    log_info "🐍 Installing kubectl asdf plugin" "asdf plugins"
+if [ ! $(asdf plugin list | grep 'python') ]; then
+    log_info "🐍 Installing python asdf plugin" "asdf plugins"
     asdf plugin-add python
 fi
 
-if [ ! $(asdf plugin list | grep 'kubectl') ]; then
+if [ ! $(asdf plugin list | grep 'java') ]; then
     log_info "☕ Installing java asdf plugin" "asdf plugins"
     asdf plugin-add java https://github.com/halcyon/asdf-java.git
 fi
 
-if [ ! $(asdf plugin list | grep 'kubectl') ]; then
+if [ ! $(asdf plugin list | grep 'kotlin') ]; then
     log_info "🧑‍💻 Installing kotlin asdf plugin" "asdf plugins"
     asdf plugin add kotlin https://github.com/asdf-community/asdf-kotlin.git
+fi
+
+if [ ! $(asdf plugin list | grep 'helm') ]; then
+    log_info "⛑️ Installing helm asdf plugin" "asdf plugins"
+    asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+
+    log_info "🎮 Adding the latest version of helm" "asdf plugins"
+    asdf install helm latest
+    asdf global helm latest
 fi
