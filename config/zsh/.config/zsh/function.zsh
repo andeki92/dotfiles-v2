@@ -36,3 +36,27 @@ function kubectl_exec_bash() {
 function idea() {
     read -r pid < <(~/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea $@ 2>&1 &)
 }
+
+function tb() {
+     read -r pid < <(jetbrains-toolbox $@ 2>&1 &)
+}
+
+function github_clone_org() {
+    if [ -z "$1" ]; then
+        echo "Error: Organization name is required."
+        return 1
+    fi
+
+    gh repo list $1 --limit 4000 | while read -r repo _; do
+        gh repo clone "$repo"
+    done
+}
+
+function clip() {
+    if [ -z "$1" ]; then
+        echo "Error: A file is required."
+        return 1
+    fi
+
+    less -FX $1 | clip.exe
+}

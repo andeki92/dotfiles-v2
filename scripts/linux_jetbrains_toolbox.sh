@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Title:  JetBrains Toolbox installer
+# Emoji: 🛠️
+
 #!/bin/bash
 
 set -e

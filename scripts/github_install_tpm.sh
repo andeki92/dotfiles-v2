@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Title: Tmux Plugin Manager installer
+# Emoji: 🧩
+
 set -eu
 
 # Resolve the current directory where the script is being executed
@@ -9,4 +12,6 @@ LIB_DIR="$CURRENT_DIR/common"
 # Load the log_library
 source $LIB_DIR/log.sh
 
-sudo apt install unattended-upgrades
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi

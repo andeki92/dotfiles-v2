@@ -1,76 +1,33 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Initialize DEBUG_MODE to false
-DEBUG_MODE="false"
+set -eu  # Exit on error and treat unset variables as an error
 
-# Define the profiles directory
-PROFILES_DIR="profiles"
+# Determine the hostname
+HOSTNAME=$(hostname)
 
-# Resolve the current directory where the script is being executed
-CURRENT_DIR="$(dirname "$(realpath "$0")")"
-LIB_DIR="$CURRENT_DIR/scripts/common"
+# Default setup path
+SETUP_DIR="./hosts/$HOSTNAME"
 
-# Load the log_library
-source $LIB_DIR/log.sh
-
-# Export DEBUG_MODE for use in other scripts
-export DEBUG_MODE
-
-# Function to parse arguments
-parse_args() {
-    while getopts ":v" opt; do
-        case ${opt} in
-        v)
-            DEBUG_MODE="true"
-            ;;
-        \?)
-            log_error "Invalid option: -$OPTARG" "install"
-            usage
-            exit 1
-            ;;
-        esac
-    done
-    shift $((OPTIND - 1))
-}
-
-# Parse arguments
-parse_args "$@"
-
-# Function to display usage information
-usage() {
-    profiles=()
-
-    for file in "$PROFILES_DIR"/install-*.sh; do
-        profile=$(basename "$file" | sed 's/install-//' | sed 's/\.sh//')
-        profiles+=("$profile")
-    done
-
-    profiles_list=$(printf ", %s" "${profiles[@]}")
-    profiles_list=${profiles_list:2}
-    log_info "🚀 Usage: $0 <profile>"
-    log_info "📃 Available profiles: [$profiles_list]"
-}
-# Check if an argument is provided
-if [ -z "$1" ]; then
-    log_error "❌ No profile provided."
+# If the hostname starts with 'SN', map to 'work-laptop'
+if [[ "$HOSTNAME" =~ ^SN ]]; then
+    SETUP_DIR="./hosts/work-laptop"
 fi
 
-# Construct the profile script filename
-PROFILE_SCRIPT="$PROFILES_DIR/install-$1.sh"
-
-# Check if the profile script exists
-if [ ! -f "$PROFILE_SCRIPT" ]; then
-    log_error "🥲 Profile '$1' does not exist."
-    usage
+# Check if the setup directory exists
+if [[ ! -d "$SETUP_DIR" ]]; then
+    echo "Error: Setup directory '$SETUP_DIR' does not exist."
     exit 1
 fi
 
-# Display a progress message
-log_info "⏳ Invoking profile script for '$1'..."
+# Check if the setup script exists
+SETUP_SCRIPT="$SETUP_DIR/setup.sh"
+if [[ ! -f "$SETUP_SCRIPT" ]]; then
+    echo "Error: Setup script '$SETUP_SCRIPT' does not exist in '$SETUP_DIR'."
+    exit 1
+fi
 
-# Execute the profile script and indent its output
-chmod +x "$PROFILE_SCRIPT"
-"$PROFILE_SCRIPT"
+# Run the setup script and log its output using the installer logging mechanism
+bash "$SETUP_SCRIPT"
 
-# Display a success message
-log_info "🧚 Profile script for '$1' executed successfully!"
+# Inform the user that the setup has completed
+echo "Setup completed successfully for '$HOSTNAME'."

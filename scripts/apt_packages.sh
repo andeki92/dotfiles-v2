@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Title: apt install packages
+# Emoji: 📦
+
 set -eu
 
 # Resolve the current directory where the script is being executed
@@ -11,6 +14,7 @@ source $LIB_DIR/log.sh
 
 wanted_packages=(
     git
+    gh
     curl
     stow
     build-essential
@@ -25,6 +29,7 @@ wanted_packages=(
 )
 
 dependencies=(
+    libfuse2 # required by jetbrains toolbox
     mesa-utils # required by jetbrains toolbox
 )
 
@@ -37,9 +42,9 @@ if ! command -v eza &>/dev/null; then
 fi
 
 sudo apt install --yes --no-install-recommends "${wanted_packages[@]}"
-sudo apt install --yes --no-install-recommends "${dependencies[@]}"
 
 # Symlink fdfind as fd
 if ! command -v fd &>/dev/null; then
-    ln -s $(which fdfind) ~/.local/bin/fd
+    mkdir -p ~/.local/bin
+    ln -sf $(which fdfind) ~/.local/bin/fd
 fi

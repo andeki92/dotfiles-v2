@@ -9,6 +9,13 @@ source $LIB_DIR/run_scripts.sh
 
 log_info "⌛ Starting the installation process for Linux."
 
+# Run the common scripts
+if run_scripts "common_"; then
+    log_info "🏆 All common scripts executed successfully."
+else
+    log_error "🔥 One or more common scripts failed to execute."
+fi
+
 # Run the linux scripts
 if run_scripts "linux_"; then
     log_info "🏆 All linux scripts executed successfully."

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Title: Rust toolchain installer
+# Emoji: 🦀
+
 set -eu
 
 # Resolve the current directory where the script is being executed
@@ -11,8 +14,10 @@ source $LIB_DIR/log.sh
 
 if ! command -v rustup &>/dev/null; then
     log_info "🦀 Installing rust" "cargo-packages"
-    curl https://sh.rustup.rs -sSf | sh
-    source $HOME/.cargo/bin
+    curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+    # Add cargo bin to the current shell session
+    source $HOME/.cargo/env
 fi
 
 if ! command -v navi &>/dev/null; then

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Title: zsh plugin installer
+# Emoji: 🦄
+
 set -eu
 
 # Resolve the current directory where the script is being executed

@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
+# Title: bat theme setup (catppuccin)
+# Emoji: 🦇
+
 set -eu
+
+shopt -s expand_aliases
+
+# before the zshrc file is sourced we don't have bat in ubuntu
+if ! command -v bat &>/dev/null; then
+    alias bat=batcat
+fi
 
 BAT_CONFIG="$(bat --config-dir)/config"
 THEME_SETTING='--theme="Catppuccin Macchiato"'
