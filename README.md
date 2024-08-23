@@ -31,7 +31,7 @@ or using the installation script
 
 This is based on the [guide here](https://gist.github.com/matthiasr/473072eeffe449459e3ccd0f5192afc7)
 
-See [this](https://gist.github.com/lysender/2dbab9ee6913fb3b6d54f0764a5554c2) gist on importing and exporting gpg-keys. This is used along with git-crypt.
+See [this](https://access.redhat.com/solutions/2115511) guide on importing and exporting gpg-keys. This is used along with git-crypt.
 
 ## TODOs
 
