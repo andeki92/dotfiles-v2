@@ -26,6 +26,8 @@ wanted_packages=(
     git-delta
     ripgrep
     preload # faster startup times
+    libssl-dev # ssl stuffs
+    git-crypt
 )
 
 dependencies=(
