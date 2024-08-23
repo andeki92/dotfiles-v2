@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Title: GPG Key Setup
+# Title: GnuPG setup
 # Emoji: 🔐
 
 #!/bin/bash
@@ -33,8 +33,10 @@ if [ -z "$keys" ]; then
     log_info "3️⃣  Third, set expiration to 2 years (2y)."
     log_info "4️⃣  Lastly, set the correct user IDs."
 
+
+    log_info "📋 Remember to run 'gpg --expert --full-generate-key'"
     # --expert to allow for ECDSA keys
-    gpg --expert --full-generate-key
+    # gpg --expert --full-generate-key
 
     exit 1
 else

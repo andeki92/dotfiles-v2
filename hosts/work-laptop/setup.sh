@@ -21,6 +21,7 @@ script_order=(
     "github_install_fzf.sh"
     "github_install_tpm.sh"
     "linux_jetbrains_toolbox.sh"
+    "wsl_gpg_setup.sh"
     "common_gpg_setup.sh"
 )
 
