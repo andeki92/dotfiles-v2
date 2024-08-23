@@ -71,6 +71,9 @@ path = .gitconfig-platform-specific
 [includeIf "gitdir:~/"]
 path = .gitconfig-workspace
 
+[includeIf "gitdir:~/.dotfiles"]
+path = .gitconfig-privatespace
+
 [includeIf "gitdir:~/privatespace/"]
 path = .gitconfig-privatespace
 
