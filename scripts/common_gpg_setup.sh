@@ -21,6 +21,11 @@ if ! command -v gpg &> /dev/null; then
     exit 1
 fi
 
+# if there is no .gnupg directory and you run gpg --list-keys it will create
+# said directory and output some stuff. We therefor run the command twice
+# and only care about the output of the second one
+gpg --list-keys &> /dev/null
+
 # Check for existing GPG keys
 keys=$(gpg --list-keys)
 
@@ -37,6 +42,14 @@ if [ -z "$keys" ]; then
     log_info "📋 Remember to run 'gpg --expert --full-generate-key'"
     # --expert to allow for ECDSA keys
     # gpg --expert --full-generate-key
+
+    # decrypt the git-crypt directories if not already decrypted
+    gpg --import $CURRENT_DIR/../secrets/gpg/private_keys.asc
+    gpg --import $CURRENT_DIR/../secrets/gpg/pub_keys.asc
+    gpg -K
+    gpg -k
+
+    gpg --import-ownertrust $CURRENT_DIR/../secrets/gpg/otrust.txt
 
     exit 1
 else

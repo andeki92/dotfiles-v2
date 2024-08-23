@@ -25,6 +25,14 @@ or using the installation script
 
 <weight>_<profile>_<host>
 
+## WSL2
+
+### GPG Signing
+
+This is based on the [guide here](https://gist.github.com/matthiasr/473072eeffe449459e3ccd0f5192afc7)
+
+See [this](https://gist.github.com/lysender/2dbab9ee6913fb3b6d54f0764a5554c2) gist on importing and exporting gpg-keys. This is used along with git-crypt.
+
 ## TODOs
 
 Following is a list of stuff I would like to include in the dotfiles repo:
