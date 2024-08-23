@@ -33,6 +33,21 @@ This is based on the [guide here](https://gist.github.com/matthiasr/473072eeffe4
 
 See [this](https://access.redhat.com/solutions/2115511) guide on importing and exporting gpg-keys. This is used along with git-crypt.
 
+## Storing secrets in Git
+
+To store secrets (obviously encrypted) in git we use [git-crypt](https://github.com/AGWA/git-crypt). Using a .gitattributes filter we can ensure everything is encrypted before being pushed to git and locally decrypted. Files stored in ./secrets will be encrypted and decrypted like this and will require `git-crypt unlock` to unlock.
+
+### Exporting GPG-keys
+
+The following commands are used to export GPG-keys:
+
+
+```
+gpg -a --export >~/.dotfiles/secrets/gpg/public_keys.asc
+gpg -a --export-secret-keys >~/.dotfiles/secrets/gpg/private_keys.asc
+gpg --export-ownertrust >~/.dotfiles/secrets/gpgotrust.txt
+```
+
 ## TODOs
 
 Following is a list of stuff I would like to include in the dotfiles repo:
