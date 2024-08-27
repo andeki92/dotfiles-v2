@@ -34,3 +34,8 @@ export PATH=$HOME/.local/bin:$PATH
 # support x11 forwarding
 export DISPLAY=":0.0"
 export LIBGL_ALWAYS_INDIRECT=1
+
+# Check if the script is running in WSL2 and on Ubuntu 24.04
+if grep -qE "(microsoft|WSL2)" /proc/version && grep -q "Ubuntu 24.04" /etc/os-release; then
+    export TERM=linux
+fi

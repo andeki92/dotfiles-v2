@@ -31,8 +31,9 @@ wanted_packages=(
 )
 
 dependencies=(
-    libfuse2 # required by jetbrains toolbox
-    mesa-utils # required by jetbrains toolbox
+    # jetbrains toolbox
+    libfuse2
+    mesa-utils
 )
 
 # Preliminary eza-checks
