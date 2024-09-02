@@ -25,9 +25,6 @@ export GPG_TTY=$(tty)
 # Krew (k8s plugin manager)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-# Elhub-plat-utils
-export PATH="$HOME/workspace/plat-platform-utils/scripts:$PATH"
-
 # .local binaries
 export PATH=$HOME/.local/bin:$PATH
 
@@ -38,4 +35,8 @@ export LIBGL_ALWAYS_INDIRECT=1
 # Check if the script is running in WSL2 and on Ubuntu 24.04
 if grep -qE "(microsoft|WSL2)" /proc/version && grep -q "Ubuntu 24.04" /etc/os-release; then
     export TERM=linux
+
+    # add platform-utils to path
+    export PATH="$HOME/workspace/plat-platform-utils/scripts:$PATH"
+    export OCI_CLI_SUPPRESS_FILE_PERMISSIONS_WARNING=True
 fi

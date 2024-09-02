@@ -63,3 +63,7 @@ command -v helm >/dev/null 2>&1 && source <(helm completion zsh)
 if [ "$TMUX" = "" ]; then
     source ~/.config/tmux/tmux-sessionizer "$PWD"
 fi
+
+# oci-cli
+
+command -v oci >/dev/null 2>&1 && 

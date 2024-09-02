@@ -31,7 +31,6 @@ alias kn="k ns"
 alias kex="kubectl_exec_into_pod"
 alias kps="kubectl_psql_start"
 
-
 alias rgf='rg --files | rg'
 
 alias gd="cd ~/.dotfiles"

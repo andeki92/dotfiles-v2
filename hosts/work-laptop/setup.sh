@@ -23,6 +23,7 @@ script_order=(
     "linux_jetbrains_toolbox.sh"
     "wsl_gpg_setup.sh"
     "common_gpg_setup.sh"
+    "krew_setup.sh"
 )
 
 # Source the installer script to run the setup

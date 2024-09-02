@@ -60,3 +60,11 @@ function clip() {
 
     less -FX $1 | clip.exe
 }
+
+function is_linux() {
+    if [ "$(uname -s)" = "Linux" ]; then
+        return 0
+    else
+        return 1
+    fi
+}

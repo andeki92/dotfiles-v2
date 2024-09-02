@@ -16,6 +16,7 @@ wanted_packages=(
     git
     gh
     curl
+    wget
     stow
     build-essential
     zsh
@@ -28,12 +29,30 @@ wanted_packages=(
     preload # faster startup times
     libssl-dev # ssl stuffs
     git-crypt
+    jq
 )
 
 dependencies=(
     # jetbrains toolbox
     libfuse2
     mesa-utils
+
+    # python3 (asdf) - https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+    build-essential
+    # libssl-dev
+    zlib1g-dev
+    libbz2-dev
+    libreadline-dev
+    libsqlite3-dev
+    # curl
+    # git
+    libncursesw5-dev
+    xz-utils
+    tk-dev
+    libxml2-dev
+    libxmlsec1-dev
+    libffi-dev
+    liblzma-dev
 )
 
 # Preliminary eza-checks
@@ -45,6 +64,7 @@ if ! command -v eza &>/dev/null; then
 fi
 
 sudo apt install --yes --no-install-recommends "${wanted_packages[@]}"
+sudo apt install --yes --no-install-recommends "${dependencies[@]}"
 
 # Symlink fdfind as fd
 if ! command -v fd &>/dev/null; then
